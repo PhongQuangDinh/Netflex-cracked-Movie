@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <link rel="shortcut icon" type="x-icon" href="ship.png"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Block Chain</title>
+    <link rel="shortcut icon" type="image/jpg" href="../static/ship.jpg">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='UI.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Sàn giao dịch tiền ảo</h1>
+        <h3>Phần dưới là data của 1 block trong block chain</h3>
+        <h3>ChatGPT suggestion on trade:</h3>
+        <p>{{ value_suggest }}</p>
+    </div>
+    <div class="circle">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+                <form action="">
+                    <h2></h2>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+                <form action="{{ url_for('index') }}" method="POST">
+                    <label for="lender">The power of coding is here</label>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Người mua</span>
+                        <input type="text" class="form-control" id="lender" aria-describedby="basic-addon3"
+                            name="lender">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Người bán</span>
+                        <input type="text" class="form-control" id="borrower" aria-describedby="basic-addon3"
+                            name="borrower">
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Số tiền</span>
+                        <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3"
+                            name="amount">
+                    </div>
+                    <button class="btn btn-primary">Chốt đơn</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+                <form action="">
+                    <button class="btn btn-outline-info">Check</button>
+                </form>
+            </div>
+        </div>
+    </div> -->
+</body>
+
+</html>
