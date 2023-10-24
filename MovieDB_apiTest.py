@@ -1,6 +1,5 @@
 import requests
 import random
-import rebrandly
 
 TMDB_API_KEY = "972fc764bfdda5b9d34821a243adc607"
 account_id = 20574151
