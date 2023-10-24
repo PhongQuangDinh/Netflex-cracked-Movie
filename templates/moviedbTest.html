@@ -28,7 +28,7 @@
             <p> Overview: {{ film["overview"] }} </p>
             <form action="/watchMovie" method="POST"> 
                 <input type="hidden" name="I clicked it" value={{film["id"]}}> <!-- Send a static data to the server-->
-                <button type="submit">Click for more detail or loose money :3</button>
+                <button type="submit">Click để xem phim :3</button>
             </form>
           {% endfor %}
         </ul>

@@ -42,6 +42,7 @@ app = Flask(__name__)
 def GetUserGeneralInputMaybe():
   # Fetch the movie data for the movie with the ID 12345
   value = request.form.get('user_input')
+  print(value)
   if str(value) != "None":
       # print(value)
       if type(value) == str: movie_data = fetch_movie_data(str(value))
@@ -65,6 +66,7 @@ def WatchMovie():
   watch_data = requests.get(watch_provider).json()
   
   vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}"
+  print(vidsrc_url)
   
   return render_template("watchMovie.html", movie_data=movie_data, video_data=video_data, watch_data = watch_data, vid_url = vidsrc_url)
 
