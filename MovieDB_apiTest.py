@@ -71,4 +71,4 @@ def WatchMovie():
   return render_template("watchMovie.html", movie_data=movie_data, video_data=video_data, watch_data = watch_data, vid_url = vidsrc_url)
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(debug=True, host='0.0.0.0')
