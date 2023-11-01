@@ -9,7 +9,7 @@ account_id = 20574151
 #   # Return the custom redirect link.
 #   return custom_redirect_link.short_url
 
-def fetch_movie_data(movie_id):
+def fetch_movie_data(movie_id, type = 'movie'):
   url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}"
   # url = f"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key={TMDB_API_KEY}"
   if type(movie_id) == str and not movie_id.isdigit():
@@ -48,7 +48,7 @@ def GetUserGeneralInputMaybe():
       if type(value) == str: movie_data = fetch_movie_data(str(value))
       else: movie_data = fetch_movie_data(int(value))
   else:
-      movie_data = fetch_movie_data(166426) # 878 # random.randint(1, 99999)
+      movie_data = fetch_movie_data(166426) # 878 # random.randint(1, 99999) # watching Pirate of the caribbean 5 instead of random
   # Render the template with the movie data
   return render_template("moviedbTest.html", movie_data=movie_data)
 
