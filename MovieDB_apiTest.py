@@ -9,7 +9,7 @@ account_id = 20574151
 #   # Return the custom redirect link.
 #   return custom_redirect_link.short_url
 
-def fetch_movie_data(movie_id, type = 'movie'):
+def fetch_movie_data(movie_id, type_call = 'movie'):
   url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}"
   # url = f"https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key={TMDB_API_KEY}"
   if type(movie_id) == str and not movie_id.isdigit():
