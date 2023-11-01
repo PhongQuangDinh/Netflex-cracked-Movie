@@ -18,18 +18,19 @@
             <p>The movie data does not have an `id` field.</p>
         {% endif %} -->
         {% if movie_data['results'] %}
-        <h3>Kết quả tìm kiếm được:</h3>
+        <h2>Kết quả tìm kiếm được:</h2>
         <ul>
           {% for film in movie_data['results'] %}
             <h4>Name: {{ film["title"] }} - ID: {{ film['id' ]}}</h4>
             <img src="https://image.tmdb.org/t/p/w500/{{ film["poster_path"] }}" alt="{{ film["title"] }} 
             width="200" height="200">
             <p> Release date: {{ film["release_date"]}} </p>
-            <p> Overview: {{ film["overview"] }} </p>
+            <p> Overview: {{ film["overview"] }} </p> 
             <form action="/watchMovie" method="POST"> 
                 <input type="hidden" name="I clicked it" value={{film["id"]}}> <!-- Send a static data to the server-->
                 <button type="submit">Click để xem phim :3</button>
             </form>
+            <!-- <p> {{ film }}</p> -->
           {% endfor %}
         </ul>
         {% else %}
@@ -42,6 +43,35 @@
 
         <!-- <h3>JSON DATA: </h3>>
         <p>{{ movie_data }} </p>> -->
+
+        <h2>Phim dài tập </h2>
+
+        {% if series_data['results'] %}
+        <ul>
+            {% for film in series_data['results'] %}
+              <h4>Name: {{ film["title"] }} - ID: {{ film['id' ]}}</h4>
+              <img src="https://image.tmdb.org/t/p/w500/{{ film["poster_path"] }}" alt="{{ film["title"] }} 
+              width="200" height="200">
+              <p> Release date: {{ film["release_date"]}} </p>
+              <p> Overview: {{ film["overview"] }} </p> 
+              <form action="/watchSeries" method="POST"> 
+                  <input type="hidden" name="I clicked it" value={{film["id"]}}> <!-- Send a static data to the server-->
+                  <button type="submit">Click để xem phim :3</button>
+              </form>
+              <!-- <p> {{ film }}</p> -->
+            {% endfor %}
+          </ul>
+          {% else %}
+              <h1>{{series_data['title']}}</h1>
+              <img src="https://image.tmdb.org/t/p/w500/{{ movie_data["poster_path"] }}" alt="{{ movie_data["title"] }} 
+                  width="500" height="400">
+              <h3>MOVIE OVERVIEW:</h3>
+              <p>{{ movie_data['overview'] }}</p>
+          {% endif %}
+
+        <!-- <h3>JSON DATA: </h3>>
+        <p>{{ series_data }} </p>> -->
+
     </div>
     <div class="circle">
         <div class="row">
@@ -56,10 +86,10 @@
         <div class="row">
             <div class="col-6 mx-auto mt-5">
                 <form action="{{ url_for('GetUserGeneralInputMaybe') }}" method="POST"> <!--POST METHOD ARE USED FOR html form user data received, while GET is for user take data from server-->
-                    <label for="lender">Tìm kiếm phim maybe, Nhập đại số id 166426 hay tên phim đại ik</label>
+                    <label for="lender">Tìm kiếm phim maybe, Nhập Tên phim đại ik</label>
                     
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon3">Nhập đại đi: </span>
+                        <span class="input-group-text" id="basic-addon3">Nhập ở đây: </span>
                         <input type="text" class="form-control" id="user_input" aria-describedby="basic-addon3"
                             name="user_input">
                     </div>
