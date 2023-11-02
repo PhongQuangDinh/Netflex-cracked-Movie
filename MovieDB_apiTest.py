@@ -96,7 +96,8 @@ def GetUserGeneralInputMaybe():
         series_data = fetch_series_data(int(value))
   else:
       movie_data = fetch_movie_data(166426) # 878 # random.randint(1, 99999) # watching Pirate of the caribbean 5 instead of random
-  # Render the template with the movie data
+      series_data = fetch_series_data(111110)
+  
   return render_template("moviedbTest.html", movie_data=movie_data, series_data=series_data)
 
 @app.route("/watchMovie", methods=['POST','GET'])

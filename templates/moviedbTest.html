@@ -34,6 +34,7 @@
           {% endfor %}
         </ul>
         {% else %}
+            <h1>Search phim ở dưới còn đây là quảng cáo</h1>
             <h1>{{movie_data['title']}}</h1>
             <img src="https://image.tmdb.org/t/p/w500/{{ movie_data["poster_path"] }}" alt="{{ movie_data["title"] }} 
                 width="500" height="400">
@@ -63,10 +64,10 @@
           </ul>
           {% else %}
               <h1>{{series_data['title']}}</h1>
-              <img src="https://image.tmdb.org/t/p/w500/{{ movie_data["poster_path"] }}" alt="{{ movie_data["title"] }} 
+              <img src="https://image.tmdb.org/t/p/w500/{{ series_data["poster_path"] }}" alt="{{ series_data["title"] }} 
                   width="500" height="400">
               <h3>MOVIE OVERVIEW:</h3>
-              <p>{{ movie_data['overview'] }}</p>
+              <p>{{ series_data['overview'] }}</p>
           {% endif %}
 
         <!-- <h3>JSON DATA: </h3>>
