@@ -8,8 +8,11 @@ account_id = 20574151
 #   url = f""
 #   # Return the custom redirect link.
 #   return custom_redirect_link.short_url
+
+ban_start = True
+
 def NotAdult(movie: dict):
-  ban = ['hentai','virgin','nude','fuck','dick', 'sex', 'flower & snake', 'hot night', 'unexpected attraction']
+  ban = ['hentai','virgin','nude','fuck','dick', 'sex', 'flower & snake', 'hot night', 'unexpected attraction','porn']
   overview = movie['overview'].lower()
   title = ''
   if 'title' in movie:
@@ -42,9 +45,11 @@ def fetch_movie_data(movie_id):
   response = requests.get(url)
   # rep = requests.get(f"https://api.themoviedb.org/3/account/{account_id}")
   movie_data = response.json()
-  if 'results' in movie_data:
+  
+  if 'results' in movie_data and ban_start:
     # far more better but worst in some case
     movie_data['results'] = list(filter(lambda result: result['adult'] == False and NotAdult(result), movie_data['results']))
+  
   return movie_data
 
 def fetch_series_data(series_id):
@@ -66,9 +71,11 @@ def fetch_series_data(series_id):
   response = requests.get(url)
   # rep = requests.get(f"https://api.themoviedb.org/3/account/{account_id}")
   movie_data = response.json()
-  if 'results' in movie_data:
+  
+  if 'results' in movie_data and ban_start:
     # far more better but worst in some case
     movie_data['results'] = list(filter(lambda result: result['adult'] == False and NotAdult(result), movie_data['results']))
+  
   return movie_data
 
 # Fetch the movie data for the movie with the ID 12345
@@ -113,7 +120,9 @@ def WatchMovie():
   # watch_provider = f'https://api.themoviedb.org/3/movie/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
-  vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}"
+  vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}" # one but almost good
+  # vidsrc_url = f"https://autoembed.to/movie/tmdb/{movie_data['id']}" # another one not very powerful
+  
   print(vidsrc_url)
   
   return render_template("watchMovie.html", movie_data=movie_data, video_data=video_data, vid_url = vidsrc_url)
@@ -131,6 +140,11 @@ def WatchSeries():
   # watch_data = requests.get(watch_provider).json()
   
   vidsrc_url = f"https://vidsrc.to/embed/tv/{movie_data['id']}"
+  
+  # SEASON_NUMBER = 1
+  # EPISODE_NUMBER = 1
+  # vidsrc_url = f"https://autoembed.to/tv/tmdb/{movie_data['id']}-{SEASON_NUMBER}-{EPISODE_NUMBER}"
+  
   print(vidsrc_url)
   
   return render_template("watchSeries.html",movie_data=movie_data, video_data=video_data, vid_url = vidsrc_url)
