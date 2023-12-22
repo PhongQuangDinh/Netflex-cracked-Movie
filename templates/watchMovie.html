@@ -23,18 +23,22 @@
             width="500" height="400">
         <img src="https://image.tmdb.org/t/p/original/{{ movie_data["backdrop_path"] }}" alt="{{ movie_data["title"] }} 
             width="500" height="400">
+            
         <!-- <video width="400" controls>
             <source src="https://www.youtube.com/watch?v=7baFljzpa10" type="video/mp4">
         </video> -->
 
         <!-- {% for video in video_data['results'] %}
-            <iframe width="930" height="523" src="https://www.youtube.com/embed/{{ video["key"] }}" allowfullscreen>
-            </iframe>
+            <iframe width="930" height="523" src="https://www.youtube.com/embed/{{ video["key"] }}" allowfullscreen></iframe>
         {% endfor %} -->
+        <!-- <p>{{ video_data }}</p> -->
 
-    
         <iframe width="930" height="523" src={{vid_url}} allowfullscreen></iframe>
-        <!-- <p> DEBUG: {{ video_data }}</p> -->
+
+        <!-- ANOTHER WAY TO STREAM IT, THE HARD WAY-->
+        <!-- <video width="640" height="360" controls>
+            <source src="https://support.google.com/drive/answer/2423694?hl=en&co=GENIE.Platform%3DDesktop" type="video/mp4">
+        </video> -->
 
         {% for country_inf in movie_data['production_countries'] %}
             <h3>Country: {{ country_inf['name'] }}</h3>
@@ -45,6 +49,7 @@
 
         <!-- <h3>JSON DATA: </h3>>
         <p>{{ movie_data }} </p>> -->
+
     </div>
 </body>
 </html>

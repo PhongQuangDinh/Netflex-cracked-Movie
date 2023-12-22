@@ -52,10 +52,10 @@
         {% if series_data['results'] %}
         <ul>
             {% for film in series_data['results'] %}
-              <h4>Name: {{ film["title"] }} - ID: {{ film['id' ]}}</h4>
+              <h4>Name: {{ film["original_name"] }} - ID: {{ film['id' ]}}</h4>
               <img src="https://image.tmdb.org/t/p/w500/{{ film["poster_path"] }}" alt="{{ film["title"] }} 
               width="200" height="200">
-              <p> Release date: {{ film["release_date"]}} </p>
+              <p> Release date: {{ film["first_air_date"]}} </p>
               <p> Overview: {{ film["overview"] }} </p> 
               <form action="/watchSeries" method="POST"> 
                   <input type="hidden" name="I clicked it" value={{film["id"]}}> <!-- Send a static data to the server-->
@@ -65,8 +65,8 @@
             {% endfor %}
           </ul>
           {% else %}
-              <h1>{{series_data['title']}}</h1>
-              <img src="https://image.tmdb.org/t/p/w500/{{ series_data["poster_path"] }}" alt="{{ series_data["title"] }} 
+              <h1>{{series_data['orginal_name']}}</h1>
+              <img src="https://image.tmdb.org/t/p/w500/{{ series_data["poster_path"] }}" alt="{{ series_data["original_name"] }} 
                   width="500" height="400">
               <h3>MOVIE OVERVIEW:</h3>
               <p>{{ series_data['overview'] }}</p>

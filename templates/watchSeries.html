@@ -18,10 +18,10 @@
             <p>The movie data does not have an `id` field.</p>
         {% endif %} -->
     
-        <h1>{{movie_data['title']}}</h1>
-        <img src="https://image.tmdb.org/t/p/original/{{ movie_data["poster_path"] }}" alt="{{ movie_data["title"] }} 
+        <h1>{{movie_data['original_name']}}</h1>
+        <img src="https://image.tmdb.org/t/p/original/{{ movie_data["poster_path"] }}" alt="{{ movie_data["original_name"] }} 
             width="500" height="400">
-        <img src="https://image.tmdb.org/t/p/original/{{ movie_data["backdrop_path"] }}" alt="{{ movie_data["title"] }} 
+        <img src="https://image.tmdb.org/t/p/original/{{ movie_data["backdrop_path"] }}" alt="{{ movie_data["original_name"] }} 
             width="500" height="400">
         <!-- <video width="400" controls>
             <source src="https://www.youtube.com/watch?v=7baFljzpa10" type="video/mp4">
@@ -39,11 +39,11 @@
         {% for country_inf in movie_data['production_countries'] %}
             <h3>Country: {{ country_inf['name'] }}</h3>
         {% endfor %}
-        <h3> Release date: {{ movie_data["release_date"]}} </h3>
+        <h3> Release date: {{ movie_data["first_air_date"]}} </h3>
         <h3>MOVIE OVERVIEW:</h3>
         <p>{{ movie_data['overview'] }}</p>
 
-        <!-- <h3>JSON DATA: </h3>>
+        <!-- <h3> JSON DATA: </h3>>
         <p>{{ movie_data }} </p>> -->
     </div>
 </body>

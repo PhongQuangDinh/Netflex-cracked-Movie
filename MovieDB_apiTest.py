@@ -1,6 +1,8 @@
 import requests
 import random
 
+from removeThis import *
+
 TMDB_API_KEY = "972fc764bfdda5b9d34821a243adc607"
 account_id = 20574151
 
@@ -84,6 +86,8 @@ def fetch_series_data(series_id):
 # Print the movie title
 # print(movie_data)
 
+
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -114,8 +118,10 @@ def WatchMovie():
   
   movie_data = fetch_movie_data(id) # 878
   
+  #------this is obsolete-------------
   video_url = f"https://api.themoviedb.org/3/movie/{id}/videos?api_key={TMDB_API_KEY}"
   video_data = requests.get(video_url).json()
+  #-------------OBSOLETE---------------
   
   # watch_provider = f'https://api.themoviedb.org/3/movie/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
@@ -125,6 +131,8 @@ def WatchMovie():
   
   print(vidsrc_url)
   
+  # removeThisAtTheEnd(movie_data, video_data) # for real bruh
+  
   return render_template("watchMovie.html", movie_data=movie_data, video_data=video_data, vid_url = vidsrc_url)
 
 @app.route("/watchSeries", methods=['POST','GET'])
@@ -132,20 +140,27 @@ def WatchSeries():
   id = request.form.get("I clicked it")
   
   movie_data = fetch_series_data(id) # 878
+  # print(id)
   
+  #------this is obsolete-------------
   video_url = f"https://api.themoviedb.org/3/tv/{id}/videos?api_key={TMDB_API_KEY}"
   video_data = requests.get(video_url).json()
+  # print(video_data)
+  #------------OBSOLETE--------------
   
   # watch_provider = f'https://api.themoviedb.org/3/tv/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
   vidsrc_url = f"https://vidsrc.to/embed/tv/{movie_data['id']}"
+  # vidsrc_url = f"https://vtbe.to/embed-0ozb9c06zh6z.html"
   
   # SEASON_NUMBER = 1
   # EPISODE_NUMBER = 1
   # vidsrc_url = f"https://autoembed.to/tv/tmdb/{movie_data['id']}-{SEASON_NUMBER}-{EPISODE_NUMBER}"
   
   print(vidsrc_url)
+  
+  # removeThisAtTheEnd2(movie_data, video_data) # for real bruh
   
   return render_template("watchSeries.html",movie_data=movie_data, video_data=video_data, vid_url = vidsrc_url)
 
