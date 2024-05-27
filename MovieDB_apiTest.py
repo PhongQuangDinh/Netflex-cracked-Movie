@@ -106,14 +106,13 @@ def WatchMovie():
   # watch_provider = f'https://api.themoviedb.org/3/movie/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
-  # vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}" # one but almost good
-  vidsrc_url = os.getenv("MOVIE_URL") + str(movie_data['id']) # one but almost good
+  url = os.getenv("MOVIE_URL") + str(movie_data['id']) # one but almost good
   
-  print(vidsrc_url)
+  print(url)
   
   # removeThisAtTheEnd(movie_data, video_data) # for real bruh
   
-  return render_template("watchMovie.html", movie_data=movie_data, video_data=video_data, vid_url = vidsrc_url)
+  return render_template("watchMovie.html", movie_data=movie_data, video_data=video_data, vid_url = url)
 
 @app.route("/watchSeries", methods=['POST','GET'])
 def WatchSeries():
@@ -131,14 +130,13 @@ def WatchSeries():
   # watch_provider = f'https://api.themoviedb.org/3/tv/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
-  # vidsrc_url = f"https://vidsrc.to/embed/tv/{movie_data['id']}"
-  vidsrc_url = os.getenv("TV_URL") + str(movie_data['id'])
+  url = os.getenv("TV_URL") + str(movie_data['id'])
   
-  print(vidsrc_url)
+  print(url)
   
   # removeThisAtTheEnd2(movie_data, video_data) # for real bruh
   
-  return render_template("watchSeries.html",movie_data=movie_data, video_data=video_data, vid_url = vidsrc_url)
+  return render_template("watchSeries.html",movie_data=movie_data, video_data=video_data, vid_url = url)
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0')
