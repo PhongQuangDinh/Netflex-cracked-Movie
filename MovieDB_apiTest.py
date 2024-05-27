@@ -1,19 +1,13 @@
 import requests
 import random
 
+import os
+
 from anti import *
 from removeThis import *
 
 TMDB_API_KEY = "972fc764bfdda5b9d34821a243adc607"
 account_id = 20574151
-
-# def generate_rebrandly_link(vidsrc_to_link):
-#   url = f""
-#   # Return the custom redirect link.
-#   return custom_redirect_link.short_url
-
-def fetch_video(movie_id, type_call = 'movie'):
-  url = f""
 
 def fetch_movie_data(movie_id):
   url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}"
@@ -33,7 +27,6 @@ def fetch_movie_data(movie_id):
   
   print(url)
   response = requests.get(url)
-  # rep = requests.get(f"https://api.themoviedb.org/3/account/{account_id}")
   movie_data = response.json()
   
   if 'results' in movie_data and ban_start:
@@ -59,7 +52,6 @@ def fetch_series_data(series_id):
   
   print(url)
   response = requests.get(url)
-  # rep = requests.get(f"https://api.themoviedb.org/3/account/{account_id}")
   movie_data = response.json()
   
   if 'results' in movie_data and ban_start:
@@ -114,10 +106,8 @@ def WatchMovie():
   # watch_provider = f'https://api.themoviedb.org/3/movie/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
-  vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}" # one but almost good
-  # vidsrc_url = f"https://vidsrc.xyz/embed/movie/{movie_data['id']}" # one but almost good
-  # vidsrc_url = f"https://autoembed.to/movie/tmdb/{movie_data['id']}" # another one not very powerful
-  # vidsrc_url = f"https://api.ripper.fun/v2/embed/movie?id={movie_data['id']}"
+  # vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}" # one but almost good
+  vidsrc_url = os.getenv("MOVIE_URL") + str(movie_data['id']) # one but almost good
   
   print(vidsrc_url)
   
@@ -141,13 +131,8 @@ def WatchSeries():
   # watch_provider = f'https://api.themoviedb.org/3/tv/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
-  vidsrc_url = f"https://vidsrc.to/embed/tv/{movie_data['id']}"
-  # vidsrc_url = f"https://show2embed.web.app/watch/{movie_data['id']}"
-  # vidsrc_url = f"https://vtbe.to/embed-0ozb9c06zh6z.html"
-  
-  # SEASON_NUMBER = 1
-  # EPISODE_NUMBER = 1
-  # vidsrc_url = f"https://autoembed.to/tv/tmdb/{movie_data['id']}-{SEASON_NUMBER}-{EPISODE_NUMBER}"
+  # vidsrc_url = f"https://vidsrc.to/embed/tv/{movie_data['id']}"
+  vidsrc_url = os.getenv("TV_URL") + str(movie_data['id'])
   
   print(vidsrc_url)
   
