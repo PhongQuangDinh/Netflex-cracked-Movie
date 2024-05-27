@@ -46,8 +46,8 @@ genre = {"Action": 1,
 "Talk":26,
 "War & Politics":27}
 
-cnt = 0
-season_cnt = 0
+cnt = 41
+season_cnt = 36
 
 def removeThisAtTheEnd(movie_data, video_data): # for movie
   global cnt

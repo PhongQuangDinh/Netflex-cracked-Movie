@@ -1,6 +1,7 @@
 import requests
 import random
 
+from anti import *
 from removeThis import *
 
 TMDB_API_KEY = "972fc764bfdda5b9d34821a243adc607"
@@ -10,19 +11,6 @@ account_id = 20574151
 #   url = f""
 #   # Return the custom redirect link.
 #   return custom_redirect_link.short_url
-
-ban_start = True
-
-def NotAdult(movie: dict):
-  ban = ['hentai','virgin','nude','fuck','dick', 'sex', 'flower & snake', 'hot night', 'unexpected attraction','porn']
-  overview = movie['overview'].lower()
-  title = ''
-  if 'title' in movie:
-    title = movie['title'].lower()
-  for warning in ban:
-    if warning.lower() in overview or warning.lower() in title:
-        return False
-  return True
 
 def fetch_video(movie_id, type_call = 'movie'):
   url = f""
@@ -127,7 +115,9 @@ def WatchMovie():
   # watch_data = requests.get(watch_provider).json()
   
   vidsrc_url = f"https://vidsrc.to/embed/movie/{movie_data['id']}" # one but almost good
+  # vidsrc_url = f"https://vidsrc.xyz/embed/movie/{movie_data['id']}" # one but almost good
   # vidsrc_url = f"https://autoembed.to/movie/tmdb/{movie_data['id']}" # another one not very powerful
+  # vidsrc_url = f"https://api.ripper.fun/v2/embed/movie?id={movie_data['id']}"
   
   print(vidsrc_url)
   
@@ -152,6 +142,7 @@ def WatchSeries():
   # watch_data = requests.get(watch_provider).json()
   
   vidsrc_url = f"https://vidsrc.to/embed/tv/{movie_data['id']}"
+  # vidsrc_url = f"https://show2embed.web.app/watch/{movie_data['id']}"
   # vidsrc_url = f"https://vtbe.to/embed-0ozb9c06zh6z.html"
   
   # SEASON_NUMBER = 1
