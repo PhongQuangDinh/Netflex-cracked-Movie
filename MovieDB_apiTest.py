@@ -105,8 +105,8 @@ def WatchMovie():
   
   # watch_provider = f'https://api.themoviedb.org/3/movie/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
-  
-  url = os.getenv("MOVIE_URL") + str(movie_data['id']) # one but almost good
+  temp = os.getenv("MOVIE_URL")
+  url = temp + str(movie_data['id']) if temp != None else "" # one but almost good
   
   print(url)
   
@@ -130,7 +130,8 @@ def WatchSeries():
   # watch_provider = f'https://api.themoviedb.org/3/tv/{id}/watch/providers?api_key={TMDB_API_KEY}'
   # watch_data = requests.get(watch_provider).json()
   
-  url = os.getenv("TV_URL") + str(movie_data['id'])
+  temp = os.getenv("TV_URL")
+  url = temp + str(movie_data['id']) if temp != None else ""
   
   print(url)
   
