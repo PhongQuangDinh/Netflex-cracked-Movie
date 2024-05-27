@@ -1,7 +1,9 @@
+import os
 ban_start = True
 
 def NotAdult(movie: dict):
-  ban = ['hentai','virgin','nude','fuck','dick', 'sex', 'flower & snake', 'hot night', 'unexpected attraction','porn']
+  temp = str(os.getenv("ANTI"))
+  ban = temp.split(',')
   overview = movie['overview'].lower()
   title = ''
   if 'title' in movie:

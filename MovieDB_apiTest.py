@@ -1,8 +1,6 @@
 import requests
 import random
 
-import os
-
 from anti import *
 from removeThis import *
 
